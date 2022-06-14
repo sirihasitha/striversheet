@@ -1,0 +1,29 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        
+        m,n = len(matrix),len(matrix[0])
+        r,c = [1] * m, [1] * n
+        
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] == 0:
+                    r[i] = 0
+                    c[j] = 0
+                    
+        for i in range(len(r)):
+            if r[i] == 0:
+                matrix[i] = [0] * n
+                
+        for j in range(n):
+            if c[j] == 0:
+                for i in range(m):
+                    matrix[i][j] = 0
+        
+        return matrix
+        
+        
+        Create two lists one for rows and one for cols and maintain track of zeroes from the matrix.
+        Later come back and update in the matrix by iterating and multypling using zeroes for rows and using a for loop for colums
